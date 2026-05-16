@@ -1,0 +1,609 @@
+<!--
+========================================================================
+PROJECT: Electronics Lab Kit - Futuristic Graduation Showcase Website
+STRUCTURE: Single Page Application Architecture
+DEPENDENCIES: Font Awesome v6.4.0, Google Fonts (Orbitron & Inter)
+========================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics Lab Kit | Next-Gen Engineering Platform</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">INITIALIZING SYSTEM...</div>
+        </div>
+    </div>
+
+    <!-- Custom Glow Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- Background Canvas for Particles -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo"><span class="neon-text-cyan">Spark</span> <span class="neon-text-purple">KIT</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#overview">Architecture</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <header id="hero" class="hero-section">
+        <div class="hero-content scroll-reveal">
+            <div class="badge">Under Supervision Dr. Ibrahim Zewail</div>
+            <h1 class="hero-title">ELECTRONICS<br><span class="gradient-text">LAB KIT</span></h1>
+            <p class="hero-subtitle">An advanced, multifunctional integrated hardware ecosystem and AI assistance platform designed to revolutionize electronic testing, signal analysis, and educational instrumentation.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary btn-glow-cyan">View Project</a>
+                <a href="#features" class="btn btn-secondary btn-glow-purple">Explore Features</a>
+            </div>
+        </div>
+        <div class="oscilloscope-wave">
+            <div class="wave-line"></div>
+        </div>
+    </header>
+
+    <!-- 2. ABOUT THE PROJECT -->
+    <section id="about" class="about-section padding-y">
+        <div class="container scroll-reveal">
+            <div class="section-header">
+                <h2 class="section-title">About The <span class="neon-text-cyan">Project</span></h2>
+                <div class="accent-bar-center"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text-block glass-card">
+                    <h3>The Engineering Vision</h3>
+                    <p>The <strong>Electronics Lab Kit</strong> is a unified, compact hardware workspace that bridges the gap between massive laboratory hardware benches and mobile engineering students. By embedding complex instrumentation layers into an optimized, modular footprint, this platform serves as an all-in-one hub for physical circuit prototyping, analysis, and validation.</p>
+                    <p>This project eliminates the logistical constraints of modern lab environments, deploying an intelligent ecosystem featuring dual-variable outputs, comprehensive logic validation matrices, high-fidelity signal sources, and a dedicated edge computing neural assistant.</p>
+                </div>
+                <div class="about-stats-block grid-2x2">
+                    <div class="stat-card glass-card">
+                        <span class="stat-num neon-text-cyan">12+</span>
+                        <span class="stat-lbl">Integrated Modules</span>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <span class="stat-num neon-text-purple">100%</span>
+                        <span class="stat-lbl">Responsive Edge AI</span>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <span class="stat-num neon-text-cyan">0.01V</span>
+                        <span class="stat-lbl">Variable Precision</span>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <span class="stat-num neon-text-purple">All-In-1</span>
+                        <span class="stat-lbl">Hardware Footprint</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PROJECT FEATURES SECTION -->
+    <section id="features" class="features-section padding-y">
+    <div class="container scroll-reveal">
+        <div class="section-header">
+            <h2 class="section-title">System <span class="neon-text-purple">Architecture Modules</span></h2>
+            <div class="accent-bar-center"></div>
+        </div>
+        <div class="features-grid">
+            
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-cyan"><i class="fa-solid fa-microchip"></i></div>
+                <h3>Power Module</h3>
+                <p>Regulates and distributes power across all circuit branches.</p>
+                <a href="transform and rectifier.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-cyan"><i class="fa-solid fa-wave-square"></i></div>
+                <h3>Function Generator</h3>
+                <p>Generates high-precision Sine, Square, and Triangle waveforms.</p>
+                <a href="Function Generator.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-purple"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Fixed Power Supply</h3>
+                <p>Provides rigid regulated voltage rails (+5V, +9V, +12V, etc).</p>
+                
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-cyan"><i class="fa-solid fa-sliders"></i></div>
+                <h3>Variable Positive Voltage</h3>
+                <p>Delivers high-current linear adjustable positive rail controls.</p>
+                
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-purple"><i class="fa-solid fa-compress"></i></div>
+                <h3>Variable Negative Voltage</h3>
+                <p>High stability linear negative voltage matching rail regulation.</p>
+                
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-cyan"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Amplifier</h3>
+                <p>Integrated analog amplification circuit matrix for sensors.</p>
+                <a href="amplifier.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-purple"><i class="fa-solid fa-calculator"></i></div>
+                <h3>Pulse Counter</h3>
+                <p>Counts external logic state transitions for precise monitoring.</p>
+                <a href="Pulse Counter.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-cyan"><i class="fa-solid fa-ellipsis-h"></i></div>
+                <h3>Pulse Generator</h3>
+                <p>Emits specialized asynchronous single or repetitive triggers.</p>
+                <a href="Pulse Generator.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-purple"><i class="fa-solid fa-microchip"></i></div>
+                <h3>Logic Probe</h3>
+                <p>Visual status indicators diagnosing digital state lines.</p>
+                <a href="Logic Probe.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-cyan"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>Logic Divider</h3>
+                <p>Hardware flip-flop array executing synchronized division.</p>
+                <a href="Logic Divider.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-purple"><i class="fa-solid fa-chart-bar"></i></div>
+                <h3>Mini Oscilloscope</h3>
+                <p>Graphic processing node displaying signal waves.</p>
+                <a href="Mini Osc.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+            <div class="feature-card glass-card">
+                <div class="feature-icon icon-cyan"><i class="fa-solid fa-arrow-right-arrows-left"></i></div>
+                <h3>Rectifier</h3>
+                <p>Full-bridge configurations mapping AC inputs into DC filter outputs.</p>
+                <a href="Rectifier.png" target="_blank" class="btn-show-circuit">
+                    <i class="fa-solid fa-eye"></i> Show Circuit
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- 4. SYSTEM OVERVIEW SECTION -->
+<section id="overview" class="overview-section padding-y">
+    <div class="container scroll-reveal">
+        <div class="section-header">
+            <h2 class="section-title">System Interconnection <span class="neon-text-cyan">Diagram</span></h2>
+            <div class="accent-bar-center"></div>
+        </div>
+        
+        <!-- حاوية الصورة الجديدة مع تأثير الزجاج والوهج -->
+        <div class="diagram-image-container glass-card">
+            <!-- اسم الصورة هنا هو system-diagram.png ويمكنك تغييره لاحقاً -->
+            <img src="System Interconnection Diagram.png" alt="Electronics Lab Kit System Architecture Diagram" class="responsive-diagram-img">
+            
+            <!-- طبقة إضاءة خلفية مستقبلية تعطي وهج وshadow للصورة المرفوعة -->
+            <div class="diagram-backend-glow"></div>
+        </div>
+    </div>
+</section>
+
+    <!-- 5. TEAM MEMBERS SECTION -->
+   <section id="team" class="team-section padding-y">
+    <div class="container scroll-reveal">
+        <div class="section-header">
+            <h2 class="section-title">Development <span class="neon-text-purple">Team</span></h2>
+            <div class="accent-bar-center"></div>
+        </div>
+
+        <div class="leader-wrapper">
+            <div class="team-card glass-card leader-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder">
+                        <div class="avatar-placeholder">
+    <!-- حط اسم ملف الصورة بتاعك هنا جوة الـ src -->
+    <img src="Zidan.png" alt="Mohamed Zidan">
+</div>
+                    </div>
+                </div>
+                <h3>Mohamed Zidan</h3>
+                <p class="role" style="display: inline-block; padding: 0 150px; text-align: center; width: auto;">Team Leader & project Designer & Ai Development</p>
+                <div class="member-socials">
+                    <a href="https://github.com/MohamedZidan0" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mohamed-zidan-00a414376/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                   <div class="avatar-placeholder"><i class="fa-solid fa-user-tie"></i></div>
+                </div>
+                <h3>Mohamed Abdel Razek</h3>
+                <p class="role">Wiring & Soldering Specialist</p>
+                <div class="member-socials">
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder">
+                        <img src="Youssef.jpeg" alt="Youssef Nagy">
+                    </div>
+                </div>
+                <h3>Youssef Nagy</h3>
+                <p class="role">Circuit Testing & Validation</p>
+                <div class="member-socials">
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder">
+                        <img src="Sarhan.jpeg" alt="Ahmed Sarhan">
+                    </div>
+                </div>
+                <h3>Ahmed Sarhan</h3>
+                <p class="role">Function Generator Development</p>
+                <div class="member-socials">
+                    <a href="https://www.linkedin.com/in/ahmed-sarhan-85b341390/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder">
+                        <img src="Abdelmawla.jpeg" alt="Mohamed Abdelmawla">
+                    </div>
+                </div>
+                <h3>Mohamed Abdelmawla</h3>
+                <p class="role">Amplifier Circuit Design</p>
+                <div class="member-socials">
+                    <a href="https://www.linkedin.com/in/mohamed-shehata-6a900b31b/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder">
+                        <img src="Hedra.jpeg" alt="Hedra Sameh">
+                        </div>
+                </div>
+                <h3>Hedra Sameh</h3>
+                <p class="role">Mini Oscilloscope Development</p>
+                <div class="member-socials">
+                    <a href="https://www.linkedin.com/in/hedra-sameh-982638346/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder">
+                        <img src="saher.jpeg" alt="Asmaa Allam">
+                    </div>
+                </div>
+                <h3>Ahmed Saher</h3>
+                <p class="role">Amplifier Circuit Design</p>
+                <div class="member-socials">
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder">
+                        <img src="Asmaa.png" alt="Asmaa Allam">
+                    </div>
+                </div>
+                <h3>Asmaa Allam</h3>
+                <p class="role">Logic Divider Circuit Design</p>
+                <div class="member-socials">
+                    <a href="https://www.linkedin.com/in/asmaa-alam-eldeeb-9a1a67394/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                   <div class="avatar-placeholder"><i class="fa-solid fa-user neon-text-purple"></i></div>
+                </div>
+                <h3>Sara Reda</h3>
+                <p class="role">Pulse Counter Circuit Design</p>
+                <div class="member-socials">
+
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder"><i class="fa-solid fa-user neon-text-purple"></i></div>
+                </div>
+                <h3>Habiba Ghalwash</h3>
+                <p class="role">Pulse Counter Circuit Design</p>
+                <div class="member-socials">
+
+                </div>
+            </div>
+            <div class="team-card glass-card side-card">
+                <div class="member-image-wrapper">
+                    <div class="avatar-placeholder"><i class="fa-solid fa-user neon-text-purple"></i></div>
+                </div>
+                <h3>Haneen Elsaftawy</h3>
+                <p class="role">Rectifier & Power Distribution Design</p>
+                <div class="member-socials">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 6. SUPERVISION SECTION -->
+    <section id="supervision" class="supervision-section padding-y">
+    <div class="container scroll-reveal">
+        <div class="supervision-wrapper glass-card">
+            <h2 class="supervision-title">Under <span class="gradient-text">Supervision</span></h2>
+            
+            <!-- تم إضافة الكلاس single-supervisor لضبط التوسط -->
+            <div class="supervision-grid single-supervisor">
+                <div class="supervisor-block">
+                    
+                    <!-- الهيكل الجديد للصورة الشخصية للدكتور -->
+                    <div class="supervisor-image-wrapper">
+                        <div class="supervisor-avatar">
+                            <!-- الأيقونة الافتراضية، وممكن تبدلها بتاج img لما تجهز الصورة -->
+                            <!-- لو هتحط صورة حقيقية مستقبلاً شيل الأيقونة وفك الكومنت عن السطر اللي تحت: -->
+                            <img src="Dr Ibrahim.jpeg" alt="Dr. Ibrahim Zewail">
+                        </div>
+                    </div>
+
+
+                    <h3>Dr. Ibrahim Zewail</h3>
+                </div>
+            </div>
+
+            <div class="institution-meta">
+                <p><i class="fa-solid fa-university"></i> Department of Electrical Engineering</p>
+                <p>HIET-KFS</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 7. TECHNOLOGIES USED SECTION -->
+    <section id="technologies" class="tech-section padding-y">
+        <div class="container scroll-reveal">
+            <div class="section-header">
+                <h2 class="section-title">Core Engine <span class="neon-text-cyan">Technologies</span></h2>
+                <div class="accent-bar-center"></div>
+            </div>
+            <div class="tech-badges-grid">
+                <div class="tech-badge-card glass-card">
+                    <i class="fa-solid fa-wave-square neon-text-cyan"></i>
+                    <h4>Analog Electronics</h4>
+                </div>
+                <div class="tech-badge-card glass-card">
+                    <i class="fa-solid fa-microchip neon-text-purple"></i>
+                    <h4>Digital Electronics</h4>
+                </div>
+                <div class="tech-badge-card glass-card">
+                    <i class="fa-solid fa-gears neon-text-cyan"></i>
+                    <h4>Embedded Systems</h4>
+                </div>
+                <div class="tech-badge-card glass-card">
+                    <i class="fa-solid fa-layer-group neon-text-purple"></i>
+                    <h4>PCB Design</h4>
+                </div>
+                <div class="tech-badge-card glass-card">
+                    <i class="fa-solid fa-signature neon-text-cyan"></i>
+                    <h4>Signal Processing</h4>
+                </div>
+                <div class="tech-badge-card glass-card">
+                    <i class="fa-solid fa-charging-station neon-text-purple"></i>
+                    <h4>Power Electronics</h4>
+                </div>
+                <div class="tech-badge-card glass-card">
+                    <i class="fa-solid fa-brain neon-text-cyan"></i>
+                    <h4>AI Integration</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. GALLERY SECTION -->
+    <section id="gallery" class="gallery-section padding-y">
+    <div class="container scroll-reveal">
+        <div class="section-header">
+            <h2 class="section-title">Team <span class="neon-text-cyan">Gallery</span></h2>
+            <div class="accent-bar-center"></div>
+        </div>
+
+        <div class="team-moments-grid">
+            <div class="moment-item glass-card">
+                <img src="team1.jpg" alt="Team Working">
+                <div class="moment-info">
+                </div>
+            </div>
+            
+            <div class="moment-item glass-card">
+                <img src="team2.jpg" alt="Team Success">
+                <div class="moment-info">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 9. TIMELINE SECTION -->
+    <section id="timeline" class="timeline-section padding-y">
+        <div class="container scroll-reveal">
+            <div class="section-header">
+                <h2 class="section-title">Development <span class="neon-text-cyan">Timeline</span></h2>
+                <div class="accent-bar-center"></div>
+            </div>
+            <div class="timeline-wrapper">
+                <div class="timeline-line"></div>
+                <!-- Step 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot dot-cyan"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="date">Phase 01</span>
+                        <h4>Idea Formulation</h4>
+                        <p>Defining architectural parameters, instrument criteria, and analyzing constraints.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot dot-purple"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="date">Phase 02</span>
+                        <h4>System Design</h4>
+                        <p>Mapping logical schematics, configuring voltage rails, and creating simulation parameters.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot dot-cyan"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="date">Phase 03</span>
+                        <h4>Advanced Simulation</h4>
+                        <p>Validating physical circuit behavior across software arrays under stressful operational frequencies.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot dot-purple"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="date">Phase 04</span>
+                        <h4>PCB Layout Design</h4>
+                        <p>Routing traces, setting up clearance boundaries, and configuring plane geometries.</p>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot dot-cyan"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="date">Phase 05</span>
+                        <h4>Hardware Assembly</h4>
+                        <p>Soldering active components, integrating controllers, and mounting physical module layers.</p>
+                    </div>
+                </div>
+                <!-- Step 6 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot dot-purple"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="date">Phase 06</span>
+                        <h4>Instrumentation Testing</h4>
+                        <p>Calibrating signal metrics, validating digital logic steps, and optimizing edge AI nodes.</p>
+                    </div>
+                </div>
+                <!-- Step 7 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot dot-cyan"></div>
+                    <div class="timeline-card glass-card">
+                        <span class="date">Phase 07</span>
+                        <h4>Final Product Launch</h4>
+                        <p>Deploying the completed system for international engineering exhibits and academic testing labs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CONTACT SECTION -->
+    <section id="contact" class="contact-section padding-y">
+    <div class="container scroll-reveal">
+        <div class="section-header">
+            <h2 class="section-title">Get In <span class="neon-text-purple">Touch</span></h2>
+            <div class="accent-bar-center"></div>
+        </div>
+        
+        <div class="contact-grid centered-form-layout">
+            <div class="contact-form-panel glass-card">
+                <form id="contactForm" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Security Email" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="System message details..." rows="5" required class="form-input"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-glow-purple w-100">Send Transmission</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Lightbox Modal Box -->
+    <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Zoomed view">
+        <div id="lightboxCaption"></div>
+    </div>
+
+    <!-- 11. FOOTER -->
+    <footer class="footer">
+        <div class="footer-glow-line"></div>
+        <div class="container footer-content">
+            <p>&copy; 2026 Spark Team •</p>
+            <p class="team-signature">Designed &amp; Developed by <span class="gradient-text">Mohamed Zidan</span></p>
+        </div>
+    </footer>
+
+    <!-- Core Interactive Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>
