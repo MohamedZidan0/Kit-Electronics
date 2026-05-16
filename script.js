@@ -1,6 +1,6 @@
 /*
 ========================================================================
-PROJECT: Electronics Lab Kit - Interactive System Controller
+PROJECT: Electronics Lab Kit - Interactive System Controller (MOBILE OPTIMIZED)
 ENGINE: HTML5 Canvas + Intersection Observers + Cursor Interceptors
 ========================================================================
 */
@@ -29,8 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sizeCanvas();
     window.addEventListener("resize", sizeCanvas);
 
+    // تقليل عدد الجزيئات على الهواتف
+    const isMobile = window.innerWidth < 768;
+    const maxParticles = isMobile ? 30 : 65;
     const particlePool = [];
-    const maxParticles = 65;
 
     class MatrixNode {
         constructor() {
@@ -69,18 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function processNetworkFrame() {
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
         
-        // Compute connection lines to simulate nodes
         for (let i = 0; i < particlePool.length; i++) {
             particlePool[i].update();
             particlePool[i].draw();
 
+            // تقليل المسافة والخطوط على الهواتف
+            const connectionDistance = isMobile ? 80 : 110;
+            const connectionOpacity = isMobile ? 0.05 : 0.08;
+            
             for (let j = i + 1; j < particlePool.length; j++) {
                 const dist = Math.hypot(particlePool[i].x - particlePool[j].x, particlePool[i].y - particlePool[j].y);
-                if (dist < 110) {
+                if (dist < connectionDistance) {
                     ctx.beginPath();
                     ctx.moveTo(particlePool[i].x, particlePool[i].y);
                     ctx.lineTo(particlePool[j].x, particlePool[j].y);
-                    ctx.strokeStyle = `rgba(176, 38, 255, ${0.08 * (1 - dist / 110)})`;
+                    ctx.strokeStyle = `rgba(176, 38, 255, ${connectionOpacity * (1 - dist / connectionDistance)})`;
                     ctx.lineWidth = 0.7;
                     ctx.stroke();
                 }
@@ -90,49 +95,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     processNetworkFrame();
 
-    // 3. Custom Glow Cursor Vector Trailing
-    const cursor = document.querySelector(".custom-cursor");
-    const cursorDot = document.querySelector(".custom-cursor-dot");
+    // 3. Custom Glow Cursor Vector Trailing (deactivate on mobile)
+    if (!isMobile) {
+        const cursor = document.querySelector(".custom-cursor");
+        const cursorDot = document.querySelector(".custom-cursor-dot");
 
-    document.addEventListener("mousemove", (e) => {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-        cursorDot.style.left = `${e.clientX}px`;
-        cursorDot.style.top = `${e.clientY}px`;
-    });
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            cursorDot.style.left = `${e.clientX}px`;
+            cursorDot.style.top = `${e.clientY}px`;
+        });
 
-    // Reactive hover scaling for buttons and cards
-    const focalElements = document.querySelectorAll("a, .glass-card, .feature-card, button, .gallery-item");
-    focalElements.forEach(item => {
-        item.addEventListener("mouseenter", () => {
-            cursor.style.width = "60px";
-            cursor.style.height = "60px";
-            cursor.style.backgroundColor = "rgba(0, 243, 255, 0.05)";
-            cursor.style.borderColor = "#b026ff";
+        const focalElements = document.querySelectorAll("a, .glass-card, .feature-card, button, .gallery-item");
+        focalElements.forEach(item => {
+            item.addEventListener("mouseenter", () => {
+                cursor.style.width = "50px";
+                cursor.style.height = "50px";
+                cursor.style.backgroundColor = "rgba(0, 243, 255, 0.05)";
+                cursor.style.borderColor = "#b026ff";
+            });
+            item.addEventListener("mouseleave", () => {
+                cursor.style.width = "35px";
+                cursor.style.height = "35px";
+                cursor.style.backgroundColor = "transparent";
+                cursor.style.borderColor = "#00f3ff";
+            });
         });
-        item.addEventListener("mouseleave", () => {
-            cursor.style.width = "40px";
-            cursor.style.height = "40px";
-            cursor.style.backgroundColor = "transparent";
-            cursor.style.borderColor = "#00f3ff";
-        });
-    });
+    }
 
     // 4. Mobile System Nav Architecture Navigation Toggle
     const mobileMenu = document.getElementById("mobile-menu");
     const navLinks = document.querySelector(".nav-links");
 
-    mobileMenu.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-        mobileMenu.classList.toggle("open");
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("active");
-            mobileMenu.classList.remove("open");
+    if (mobileMenu) {
+        mobileMenu.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            mobileMenu.classList.toggle("open");
         });
-    });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                mobileMenu.classList.remove("open");
+            });
+        });
+    }
 
     // 5. Scroll Reveal Engine (Intersection Observers)
     const revealNodes = document.querySelectorAll(".scroll-reveal");
@@ -152,51 +160,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const lightboxClose = document.querySelector(".lightbox-close");
     const galleryItems = document.querySelectorAll(".gallery-item");
 
-    galleryItems.forEach(item => {
-        item.addEventListener("click", () => {
-            const highResSource = item.getAttribute("data-src");
-            const description = item.querySelector("img").getAttribute("alt");
-            lightbox.style.display = "block";
-            lightboxImg.src = highResSource;
-            document.getElementById("lightboxCaption").innerText = description;
-            document.body.style.overflow = "hidden"; // Stop background window scrolling
+    if (lightbox && lightboxImg && lightboxClose) {
+        galleryItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const highResSource = item.getAttribute("data-src");
+                const description = item.querySelector("img").getAttribute("alt");
+                lightbox.style.display = "block";
+                lightboxImg.src = highResSource;
+                document.getElementById("lightboxCaption").innerText = description;
+                document.body.style.overflow = "hidden";
+            });
         });
-    });
 
-    lightboxClose.addEventListener("click", () => {
-        lightbox.style.display = "none";
-        document.body.style.overflow = "auto";
-    });
-
-    lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
+        lightboxClose.addEventListener("click", () => {
             lightbox.style.display = "none";
             document.body.style.overflow = "auto";
-        }
-    });
-const modal = document.getElementById("galleryModal");
-const btn = document.getElementById("openGalleryBtn");
-const span = document.getElementsByClassName("close-modal")[0];
+        });
 
-// فتح المودال عند الضغط على الزرار
-btn.onclick = function() {
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // يمنع سكول الصفحة الأصلية
-}
-
-// قفل المودال عند الضغط على X
-span.onclick = function() {
-    modal.style.display = "none";
-    document.body.style.overflow = "auto";
-}
-
-// قفل المودال لو ضغطت في أي مكان بره الكادر
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        });
     }
-}
+
+    // Gallery Modal Logic
+    const modal = document.getElementById("galleryModal");
+    const btn = document.getElementById("openGalleryBtn");
+    const span = document.getElementsByClassName("close-modal")[0];
+
+    if (btn && modal && span) {
+        btn.onclick = function() {
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    }
+
     // 7. Dynamic SVG Setup for Node Diagrams
     const svgOverlay = document.querySelector(".diagram-lines");
     if(svgOverlay) {
@@ -208,5 +220,10 @@ window.onclick = function(event) {
                 </linearGradient>
             </defs>
         `;
+    }
+
+    // Performance optimization: disable animations on low-end devices
+    if (!isMobile) {
+        document.body.style.setProperty('--transition-smooth', 'cubic-bezier(0.4, 0, 0.2, 1)');
     }
 });
