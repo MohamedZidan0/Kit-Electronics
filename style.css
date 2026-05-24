@@ -76,7 +76,15 @@ body {
     border-bottom: 1px solid var(--border-glass);
     z-index: 1000;
 }
+.single-moment-container {
+    width: 100%;
+    max-width: 900px; /* تقدر تكبر الرقم ده أو تصغره حسب إنت عايز الصورة واسعة قد إيه */
+    margin: 0 auto;   /* علشان يخلي الكارت كله في نص الشاشة بالظبط */
+}
 
+.single-moment-container .moment-item {
+    width: 100%;
+}
 .nav-container {
     width: 90%;
     max-width: 1200px;
